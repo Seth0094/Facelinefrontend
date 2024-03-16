@@ -1,0 +1,199 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="toggle">
+      <ion-text>Dark mode</ion-text>
+      <ion-toggle
+        [(ngModel)]="themeToggle"
+        (ionChange)="toggleChange($event)"
+      ></ion-toggle>
+    </div>
+    <ion-accordion-group>
+      <!-- Update profile -->
+      <ion-accordion value="first">
+        <ion-item lines="none" slot="header">
+          <ion-text color="dark"><h5>Update your profile</h5></ion-text>
+        </ion-item>
+        <div slot="content">
+          <form (ngSubmit)="updateProfile()" [formGroup]="profileForm">
+            <div class="image-container" *ngIf="avatar">
+              <img [src]="avatar" class="avatar" alt="image" />
+              <ion-fab class="edit-image-btn">
+                <ion-fab-button (click)="editAvatar()" size="small">
+                  <ion-icon name="pencil"></ion-icon>
+                </ion-fab-button>
+              </ion-fab>
+            </div>
+
+            <div class="input">
+              <ion-input
+                fill="outline"
+                label="Name"
+                labelPlacement="floating"
+                type="text"
+                formControlName="name"
+              ></ion-input>
+              <ion-note
+                *ngIf="profileForm.get('name')?.invalid && profileForm.get('name')?.touched"
+                color="danger"
+              >
+                {{ getErrorMessage('name') }}
+              </ion-note>
+            </div>
+
+            <div class="input">
+              <ion-input
+                fill="outline"
+                label="Username"
+                labelPlacement="floating"
+                type="text"
+                formControlName="username"
+              ></ion-input>
+              <ion-note
+                *ngIf="profileForm.get('identifier')?.invalid && profileForm.get('identifier')?.touched"
+                color="danger"
+              >
+                {{ getErrorMessage('identifier') }}
+              </ion-note>
+            </div>
+
+            <div class="input">
+              <ion-textarea
+                fill="outline"
+                label="Biography"
+                labelPlacement="floating"
+                maxlength="100"
+                autoGrow="true"
+                formControlName="bio"
+              ></ion-textarea>
+              <ion-note
+                *ngIf="profileForm.get('bio')?.invalid && profileForm.get('bio')?.touched"
+                color="danger"
+              >
+                {{ getErrorMessage('bio') }}
+              </ion-note>
+            </div>
+
+            <ion-button
+              type="submit"
+              [disabled]="profileForm.invalid"
+              expand="block"
+              shape="round"
+              color="primary"
+              strong="true"
+              [disabled]="profileForm.invalid"
+              >Update profile</ion-button
+            >
+          </form>
+        </div>
+      </ion-accordion>
+
+      <!-- Update password -->
+      <ion-accordion value="second">
+        <ion-item lines="none" slot="header">
+          <ion-text color="dark"><h5>Change your password</h5></ion-text>
+        </ion-item>
+        <div slot="content">
+          <form (ngSubmit)="changePassword()" [formGroup]="passwordForm">
+            <div class="input">
+              <ion-input
+                fill="outline"
+                label="Old password"
+                labelPlacement="floating"
+                type="password"
+                formControlName="oldPassword"
+              ></ion-input>
+              <ion-note
+                *ngIf="passwordForm.get('oldPassword')?.invalid && passwordForm.get('oldPassword')?.touched"
+                color="danger"
+              >
+                {{ getErrorMessage('oldPassword') }}
+              </ion-note>
+            </div>
+
+            <div class="input">
+              <ion-input
+                fill="outline"
+                label="New password"
+                labelPlacement="floating"
+                type="password"
+                formControlName="newPassword"
+              ></ion-input>
+              <ion-note
+                *ngIf="passwordForm.get('newPassword')?.invalid && passwordForm.get('newPassword')?.touched"
+                color="danger"
+              >
+                {{ getErrorMessage('newPassword') }}
+              </ion-note>
+            </div>
+
+            <div class="input">
+              <ion-input
+                fill="outline"
+                label="Confirm new password"
+                labelPlacement="floating"
+                type="password"
+                formControlName="confirmNewPassword"
+              ></ion-input>
+              <ion-note
+                *ngIf="passwordForm.get('confirmNewPassword')?.invalid && passwordForm.get('confirmNewPassword')?.touched"
+                color="danger"
+              >
+                {{ getErrorMessage('confirmNewPassword') }}
+              </ion-note>
+            </div>
+
+            <ion-button
+              type="submit"
+              [disabled]="profileForm.invalid"
+              expand="block"
+              shape="round"
+              color="primary"
+              strong="true"
+              [disabled]="passwordForm.invalid"
+              >Change password</ion-button
+            >
+          </form>
+        </div>
+      </ion-accordion>
+
+      <!-- Critical -->
+      <ion-accordion value="third">
+        <ion-item lines="none" slot="header">
+          <ion-text color="dark"><h5>Logout & Account removal</h5></ion-text>
+        </ion-item>
+        <div class="danger-container" slot="content">
+          <ion-button
+            expand="block"
+            shape="round"
+            color="primary"
+            strong="true"
+            (click)="logout()"
+            >Logout</ion-button
+          >
+          <div class="danger">
+            <ion-button
+              expand="block"
+              shape="round"
+              color="danger"
+              strong="true"
+              (click)="presentAlert()"
+              >Delete account</ion-button
+            >
+            <ion-text color="danger">
+              WARNING! This action is irreversible. You will lose all your data.
+            </ion-text>
+          </div>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </div>
+</ion-content>

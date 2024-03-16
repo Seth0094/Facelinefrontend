@@ -1,0 +1,104 @@
+<ion-content>
+  <div class="container">
+    <h1 class="title">Faceline</h1>
+    <h2 class="subtitle">Sign up</h2>
+    <ion-text color="medium" class="text"
+      >Create your account and start faceline</ion-text
+    >
+    <form (ngSubmit)="register()" [formGroup]="registerForm">
+      <div class="input">
+        <ion-input
+          fill="outline"
+          label="Name"
+          labelPlacement="floating"
+          type="text"
+          formControlName="name"
+        ></ion-input>
+        <ion-note
+          *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched"
+          color="danger"
+        >
+          {{ getErrorMessage('name') }}
+        </ion-note>
+      </div>
+
+      <div class="input">
+        <ion-input
+          fill="outline"
+          label="Username"
+          labelPlacement="floating"
+          type="text"
+          formControlName="username"
+        ></ion-input>
+        <ion-note
+          *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched"
+          color="danger"
+        >
+          {{ getErrorMessage('username') }}
+        </ion-note>
+      </div>
+
+      <div class="input">
+        <ion-input
+          fill="outline"
+          label="Email"
+          labelPlacement="floating"
+          type="email"
+          formControlName="email"
+        ></ion-input>
+        <ion-note
+          *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"
+          color="danger"
+        >
+          {{ getErrorMessage('email') }}
+        </ion-note>
+      </div>
+
+      <div class="input">
+        <ion-input
+          fill="outline"
+          label="Password"
+          labelPlacement="floating"
+          type="password"
+          maxlength="15"
+          formControlName="password"
+        ></ion-input>
+        <ion-note
+          *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
+          color="danger"
+        >
+          {{ getErrorMessage('password') }}
+        </ion-note>
+      </div>
+
+      <div class="input">
+        <ion-textarea
+          fill="outline"
+          label="Biography"
+          labelPlacement="floating"
+          maxlength="100"
+          autoGrow="true"
+          formControlName="bio"
+        ></ion-textarea>
+        <ion-note
+          *ngIf="registerForm.get('bio')?.invalid && registerForm.get('bio')?.touched"
+          color="danger"
+        >
+          {{ getErrorMessage('bio') }}
+        </ion-note>
+      </div>
+
+      <ion-button
+        shape="round"
+        type="submit"
+        expand="block"
+        [disabled]="registerForm.invalid"
+        >Register</ion-button
+      >
+    </form>
+    <ion-text color="medium"
+      >Already have an account?
+      <a [routerLink]="['/login']">Sign in</a></ion-text
+    >
+  </div>
+</ion-content>

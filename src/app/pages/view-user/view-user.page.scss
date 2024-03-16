@@ -1,0 +1,129 @@
+
+ion-title {
+  color: #6042bc;
+
+  font-weight: bold;
+}
+
+ion-fab {
+  position: relative;
+}
+
+ion-fab-button {
+  height: 48px;
+  width: 48px;
+  aspect-ratio: 1;
+}
+
+.header {
+  
+  height: 7rem;
+  position: relative;
+}
+
+.image::before {
+  content: "";
+  width: 9rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+
+  background-color:#6042bc;;
+
+  position: absolute;
+  left: 50%;
+  bottom: -4rem;
+
+  transform: translateX(-50%);
+}
+
+.image img {
+  width: 8rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+
+  position: absolute;
+  left: 50%;
+  bottom: -3.5rem;
+
+  transform: translateX(-50%);
+}
+
+.inner {
+  padding-top: 5rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.content {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.bio {
+  text-align: center;
+  max-width: 90%;
+}
+
+.info {
+  font-size: 1.3rem;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.followage {
+  display: flex;
+  gap: 5rem;
+}
+
+.followage-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  margin: 1rem 0;
+}
+
+.followage-item .number {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.buttons {
+  margin: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.follow-btn {
+  flex: 1;
+}
+
+.block-btn {
+  margin-right: 8px;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blocked {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.3rem;
+  margin-top: 10rem;
+}
+
+.unblock-btn {
+  margin-top: 1rem;
+}

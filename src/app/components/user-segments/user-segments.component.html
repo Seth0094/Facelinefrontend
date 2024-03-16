@@ -1,0 +1,23 @@
+<ion-refresher slot="fixed" (ionRefresh)="onRefresh($any($event))">
+  <ion-refresher-content></ion-refresher-content>
+</ion-refresher>
+
+<ion-segment [(ngModel)]="segment" (ionChange)="segmentChanged($event)">
+  <ion-segment-button *ngFor="let seg of segments" [value]="seg.name">{{
+    seg.name | titlecase
+  }}</ion-segment-button>
+</ion-segment>
+
+<div class="content-container" *ngIf="faces.length === 0">
+  <div class="no-content">No faces</div>
+</div>
+
+<app-face
+(reloadEvent)="loadFaces()"
+*ngFor="let face of faces"
+[face]="face"
+></app-face>
+
+<ion-infinite-scroll *ngIf="faces.length > 0" (ionInfinite)="loadMore($event)">
+  <ion-infinite-scroll-content></ion-infinite-scroll-content>
+</ion-infinite-scroll>

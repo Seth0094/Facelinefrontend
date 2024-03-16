@@ -1,0 +1,96 @@
+
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content *ngIf="user">
+  <div class="container">
+    <div class="header">
+      <div class="image">
+        <img src="{{ user.avatar }}" />
+      </div>
+    </div>
+    <div class="info">
+      <div class="inner">
+        <ion-text class="name">{{ user.name }}</ion-text>
+      </div>
+    </div>
+    <div class="content" *ngIf="!user.hasMeBlocked && !user.blocked">
+      <div class="bio">
+        <ion-text>{{ user.bio }}</ion-text>
+      </div>
+      <div class="followage">
+        <div class="followage-item" (click)="gotoFollows('following')">
+          <ion-text class="number">{{ user.followingCount }}</ion-text>
+          <ion-text color="medium">Following</ion-text>
+        </div>
+        <div class="followage-item" (click)="gotoFollows('followers')">
+          <ion-text class="number">{{ user.followersCount }}</ion-text>
+          <ion-text color="medium">Followers</ion-text>
+        </div>
+      </div>
+      <div class="date">
+        <ion-text color="medium"
+          >Joined in {{ user.createdAt | date }}</ion-text
+        >
+      </div>
+    </div>
+    <div class="buttons" *ngIf="user.hasMeBlocked === false">
+      <ion-button
+        shape="round"
+        expand="block"
+        class="follow-btn"
+        [fill]="user.following ? 'outline' : 'solid'"
+        *ngIf="user.blocked=== false"
+        (click)="followUser()"
+        >{{user.following ? "Followed" : "Follow"}}</ion-button
+      >
+
+      <ion-fab *ngIf="!user.blocked && !user.hasMeBlocked">
+        <ion-fab-button color="light">
+          <ion-icon name="ellipsis-vertical"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list side="top">
+          <ion-fab-button
+            class="block-btn"
+            color="danger"
+            (click)="presentAlert()"
+          >
+            <ion-icon name="lock-closed"></ion-icon>
+          </ion-fab-button>
+        </ion-fab-list>
+      </ion-fab>
+    </div>
+
+    <div class="blocked" *ngIf="user.hasMeBlocked">
+      <ion-text>You're blocked</ion-text>
+      <ion-text color="medium"
+        >You can't follow or see @{{user.username}}'s faces</ion-text
+      >
+    </div>
+
+    <div class="blocked" *ngIf="user.blocked && !user.hasMeBlocked">
+      <ion-text>@{{user.username}} is blocked</ion-text>
+      <ion-text color="medium">
+        You can't see @{{user.username}}'s faces</ion-text
+      >
+      <ion-button
+        shape="round"
+        fill="outline"
+        color="danger"
+        class="unblock-btn"
+        (click)="blockUser()"
+      >
+        Unblock
+      </ion-button>
+    </div>
+  </div>
+  <app-user-segments
+    *ngIf="user && !user.hasMeBlocked && !user.blocked"
+    [userId]="user._id"
+  ></app-user-segments>
+</ion-content>

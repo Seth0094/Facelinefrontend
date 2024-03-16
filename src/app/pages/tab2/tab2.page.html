@@ -1,0 +1,79 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Search</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar
+      [debounce]="800"
+      (ionInput)="handleInput($event)"
+    ></ion-searchbar>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="segment" (ionChange)="onSegmentChange()">
+      <ion-segment-button value="faces"> Faces </ion-segment-button>
+      <ion-segment-button value="users"> Users </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container>
+    <ion-refresher slot="fixed" (ionRefresh)="onRefresh($any($event))">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <ng-container *ngIf="segment === 'faces'">
+      <div class="chips">
+        <ion-chip
+          [color]="filter === 'latest' ? 'primary' : 'medium'"
+          [outline]="filter !== 'latest'"
+          (click)="setFilter('latest')"
+          >Latest</ion-chip
+        >
+        <ion-chip
+          [color]="filter === 'oldest' ? 'primary' : 'medium'"
+          [outline]="filter !== 'oldest'"
+          (click)="setFilter('oldest')"
+          >Oldest</ion-chip
+        >
+        <ion-chip
+          [color]="filter === 'popular' ? 'primary' : 'medium'"
+          [outline]="filter !== 'popular'"
+          (click)="setFilter('popular')"
+          >Popular</ion-chip
+        >
+        <ion-chip
+          [color]="filter === 'media' ? 'primary' : 'medium'"
+          [outline]="filter !== 'media'"
+          (click)="setFilter('media')"
+          >Media</ion-chip
+        >
+      </div>
+      <app-face *ngFor="let face of faces" [face]="face"></app-face>
+    </ng-container>
+
+    <div
+      class="content-container"
+      *ngIf="segment === 'faces' && faces.length === 0"
+    >
+      <div class="no-content">No faces</div>
+    </div>
+
+    <div
+      class="content-container"
+      *ngIf="segment === 'users' && users.length === 0"
+    >
+      <div class="no-content">No users</div>
+    </div>
+
+    <ng-container *ngIf="segment === 'users'">
+      <app-user *ngFor="let user of users" [user]="user"></app-user>
+    </ng-container>
+  </ng-container>
+  <ion-infinite-scroll
+    *ngIf="users.length > 0 || faces.length > 0"
+    (ionInfinite)="loadMore($event)"
+  >
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,41 @@
+h4 {
+  margin-top: 0;
+  background-color: var(--ion-color-step-50);
+  padding: 1rem;
+  border-bottom: 1px solid var(--ion-color-light);
+}
+
+
+ion-header {
+  --border-color: transparent; 
+}
+
+ion-title {
+  color:#6042bc;
+  font-size: 24px; 
+  font-weight: bold; 
+}
+
+
+.replies h4 {
+  color: #6042bc; 
+  padding: 0 16px; 
+  font-weight: bold; 
+}
+
+
+
+
+.content-container.no-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; 
+  color: #888; 
+  font-size: 20px; 
+}
+
+
+ion-fab {
+  --background: #6042bc;
+}

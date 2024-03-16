@@ -1,0 +1,61 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismissModal()" color="danger">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title *ngIf="faceId.length === 0"> Create face </ion-title>
+    <ion-title *ngIf="faceId.length > 0"> Reply to face </ion-title>
+    <ion-buttons slot="end">
+      <ion-button
+        class="save-btn"
+        (click)="createFace()"
+        color="primary"
+        fill="solid"
+        [disabled]="createFaceForm.invalid || loading"
+        [strong]="true"
+        shape="round"
+      >
+        Save
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="container">
+    <form [formGroup]="createFaceForm">
+      <ion-textarea
+        fill="outline"
+        placeholder="What's on your mind?"
+        [autoGrow]="true"
+        [counter]="true"
+        maxlength="400"
+        formControlName="content"
+      >
+      </ion-textarea>
+    </form>
+    
+    <div class="image-container" *ngIf="image">
+      <img
+        [src]="image.dataUrl"
+        alt="image"
+        style="width: 100%; height: auto"
+      />
+      <ion-fab>
+        <ion-fab-button
+          class="remove-image-btn"
+          (click)="removeImage()"
+          size="small"
+        >
+          <ion-icon name="close"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </div>
+    
+    <ion-button  shape="round" expand="block" (click)="uploadImage()"
+      >Upload image</ion-button>
+
+    </div>
+</ion-content>

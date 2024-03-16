@@ -1,0 +1,41 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Faceline</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="onRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <app-face
+    (editEvent)="onFaceEdit()"
+    (deleteEvent)="onFaceDelete()"
+    *ngIf="face"
+    [face]="face"
+  ></app-face>
+
+  <div class="replies">
+    <h4>Replies</h4>
+    <ng-container *ngIf="replies.length > 0">
+      <app-face
+        (reloadEvent)="loadData()"
+        *ngFor="let reply of replies"
+        [face]="reply"
+      ></app-face>
+    </ng-container>
+    <div class="content-container" *ngIf="replies.length === 0">
+      <div class="no-content">No replies yet</div>
+    </div>
+  </div>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="reply()">
+      <ion-icon name="arrow-redo"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

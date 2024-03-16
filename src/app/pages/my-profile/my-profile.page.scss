@@ -1,0 +1,95 @@
+
+
+.header {
+
+  height: 7rem;
+  position: relative;
+}
+
+.image::before {
+  content: "";
+  width: 9rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+
+  background-color: #6042bc;
+
+
+
+  position: absolute;
+  left: 50%;
+  bottom: -4rem;
+
+  transform: translateX(-50%);
+}
+
+ion-title {
+  color: #6042bc;
+
+  font-weight: bold;
+}
+
+.image img {
+  width: 8rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+
+  position: absolute;
+  left: 50%;
+  bottom: -3.5rem;
+
+  transform: translateX(-50%);
+}
+
+.inner {
+  padding-top: 5rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.content {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.bio {
+  text-align: center;
+  max-width: 90%;
+}
+
+.info {
+  font-size: 1.3rem;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.followage {
+  display: flex;
+  gap: 5rem;
+}
+
+.followage-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  margin: 1rem 0;
+}
+
+.followage-item .number {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.setting-btn {
+  margin: 2rem;
+  
+  
+}

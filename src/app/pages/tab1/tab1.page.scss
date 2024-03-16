@@ -1,0 +1,36 @@
+ion-fab-button[slot='end'] {
+  margin-right: 1rem;
+  margin-top: 0.75rem;
+}
+
+
+ion-header.ion-no-border {
+  border-bottom: none;
+}
+
+
+ion-toolbar {
+  background: #6042bc; 
+  color: #6042bc; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 0 15px; 
+}
+
+
+ion-title {
+  font-size: 24px; 
+  font-weight: bold; 
+}
+
+
+ion-fab-button {
+  --background: #6042bc; 
+}
+
+
+
+ion-infinite-scroll-content {
+  padding: 20px; 
+}

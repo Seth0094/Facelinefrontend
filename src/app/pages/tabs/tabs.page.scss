@@ -1,0 +1,14 @@
+
+
+ion-tab-bar {
+   /* Cambiar el fondo del tab bar */
+    --color-selected: #4c3aa3; /* Color de ícono cuando está seleccionado */
+    --color: #999999; /* Color de ícono por defecto */
+    --tab-button-border-style: none; /* Eliminar cualquier borde del botón de la pestaña si existe */
+  }
+  
+  
+  ion-tab-button {
+    --ripple-color: #4c3aa3; 
+  }
+  

@@ -1,0 +1,41 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar> 
+    <ion-title> FaceLine </ion-title>
+    <ion-fab-button slot="end" (click)="redirectToProfile()" size="small">
+      <ion-icon name="person"></ion-icon>
+    </ion-fab-button>
+
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="app-face">
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="createFace()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-refresher slot="fixed" (ionRefresh)="onRefresh($any($event))">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="content-container" *ngIf="faces.length === 0">
+    <div class="no-content">No faces</div>
+  </div>
+
+  <ng-container>
+    <app-face
+      (reloadEvent)="loadFaces()"
+      *ngFor="let face of faces"
+      [face]="face"
+    ></app-face>
+  </ng-container>
+
+  <ion-infinite-scroll
+    *ngIf="faces.length > 0"
+    (ionInfinite)="loadMore($event)"
+  >
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

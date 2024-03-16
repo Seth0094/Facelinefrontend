@@ -1,0 +1,90 @@
+.container {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.avatar {
+  width: 130px;
+  aspect-ratio: 1;
+  border-radius: 60%;
+  object-fit: cover;
+}
+
+.image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.edit-image-btn {
+  position: absolute;
+  top: 0;
+  right: 90px;
+}
+
+.toggle {
+  padding: 1.15rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--ion-color-step-50);
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+ion-title {
+  color: #6042bc;
+
+  font-weight: bold;
+}
+
+ion-accordion {
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+ion-accordion ion-item[slot="header"] {
+  --padding-bottom: 0.45rem;
+  --background: var(--ion-color-step-50);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 0.5rem;
+  position: relative;
+}
+
+ion-note {
+  position: absolute;
+  left: 0;
+  bottom: -1.4rem;
+  font-size: 0.8rem;
+  color: var(--ion-color-danger);
+}
+
+ion-accordion div[slot="content"] {
+  padding: 1rem;
+  background-color: var(--ion-color-step-50);
+}
+
+.danger-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.danger {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

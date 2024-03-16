@@ -1,0 +1,55 @@
+.title,
+.subtitle,
+p {
+  margin: 0;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #6042bc;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--ion-color-dark);
+}
+
+.container {
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 100%;
+  justify-content: center;
+  background: var(--ion-background-color);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 0.5rem;
+  position: relative;
+}
+
+ion-note {
+  position: absolute;
+  left: 0;
+  bottom: -1.4rem;
+  font-size: 0.8rem;
+  color: var(--ion-color-danger);
+}
+
+a {
+  color: var(--ion-color-primary);
+  font-weight: 500;
+}

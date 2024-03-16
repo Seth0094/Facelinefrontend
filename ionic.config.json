@@ -1,0 +1,8 @@
+{
+  "name": "faceline",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "dacb1"
+}

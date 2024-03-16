@@ -1,0 +1,52 @@
+<ion-content>
+  <div class="container">
+    <img src="assets/icon/FACE.png" alt="Faceline" class="logo">
+    <h2 class="subtitle">Sign in</h2>
+    <ion-text color="medium" class="text">Sign in to enter the app</ion-text>
+    <form (ngSubmit)="login()" [formGroup]="loginForm">
+      <div class="input">
+        <ion-input
+          fill="outline"
+          label="Username or email"
+          labelPlacement="floating"
+          type="text"
+          formControlName="identifier"
+        ></ion-input>
+        <ion-note
+          *ngIf="loginForm.get('identifier')?.invalid && loginForm.get('identifier')?.touched"
+          color="danger"
+        >
+          {{ getErrorMessage('identifier') }}
+        </ion-note>
+      </div>
+
+      <div class="input">
+        <ion-input
+          fill="outline"
+          label="Password"
+          labelPlacement="floating"
+          type="password"
+          formControlName="password"
+          maxlength="15"
+        ></ion-input>
+        <ion-note
+          *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+          color="danger"
+        >
+          {{ getErrorMessage('password') }}
+        </ion-note>
+      </div>
+      <ion-button
+        type="submit"
+        expand="block"
+        shape="round"
+        [disabled]="loginForm.invalid"
+        >Sign in</ion-button
+      >
+    </form>
+    <ion-text color="medium"
+      >Don't have an account?
+      <a [routerLink]="['/register']">Sign up</a></ion-text
+    >
+  </div>
+</ion-content>

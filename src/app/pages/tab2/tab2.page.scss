@@ -1,0 +1,95 @@
+.chips {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  border-bottom: 1px solid var(--ion-color-light);
+}
+
+ion-searchbar {
+  --background: var(--ion-color-light);
+  --border-radius: 2rem;
+  --box-shadow: none;
+  --padding: 1rem;
+  --margin-left: 2rem;
+  --margin-right: 2rem;
+}
+
+
+ion-header.ion-no-border {
+  --border-color: transparent;
+}
+
+
+
+
+ion-title {
+  color: #6042bc;
+  text-align: center;
+  font-weight: bold;
+}
+
+
+ion-searchbar {
+ 
+  --placeholder-color: #888888; 
+  --icon-color: #6042bc; 
+  --color: #6042bc; 
+}
+
+
+ion-segment-button {
+  --color: #888; 
+
+}
+
+
+ion-chip {
+  --color: #888; 
+  --color-selected: #4c3aa3; 
+  --background: transparent; 
+  --background-selected: #eaeaea; 
+}
+
+
+.content-container {
+  padding: 16px;
+  text-align: center;
+}
+
+.no-content {
+  color: #888; 
+  font-style: italic;
+}
+
+ion-infinite-scroll-content {
+  --loading-spinner-color: #6042bc; 
+}
+
+app-face, app-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px; 
+}
+
+
+.chips {
+  display: flex;
+  justify-content: center; 
+  flex-wrap: wrap; 
+  gap: 8px; 
+  padding: 16px;
+}
+
+
+@media (max-width: 768px) {
+
+  ion-title {
+    font-size: 24px; 
+    font-weight: bold;
+  }
+  ion-searchbar {
+    --height: 40px; 
+  }
+}
+

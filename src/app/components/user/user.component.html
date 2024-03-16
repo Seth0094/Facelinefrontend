@@ -1,0 +1,13 @@
+<div class="container" (click)="redirectToUser()">
+  <div class="header">
+    <ion-avatar class="avatar">
+      <img src="{{ user.avatar }}" />
+    </ion-avatar>
+    <div class="info">
+      <ion-text class="name">{{ user.name }}</ion-text>
+    </div>
+  </div>
+  <div class="bio">
+    <ion-text>{{ user.bio }}</ion-text>
+  </div>
+</div>

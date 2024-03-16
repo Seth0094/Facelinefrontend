@@ -1,0 +1,82 @@
+<div class="container" (click)="redirectToFace()"> 
+  <div class="avatar"> 
+    <div class="avatar-container" (click)="redirectToUser($event)"> 
+      <img [src]="face.user.avatar" /> 
+    </div> 
+  </div> 
+  <div class="content"> 
+    <div class="header"> 
+      <div class="info"> 
+        <div class="user"> 
+          <ion-text class="name">{{ face.user.name }}</ion-text> 
+        </div> 
+        <div class="replying" *ngIf="face.isReplyTo"> 
+          <ion-text color="medium"> 
+            Replying to 
+            <ion-text color="primary" (click)="sendToReply($event)"> 
+              this face 
+            </ion-text> 
+          </ion-text> 
+        </div> 
+      </div> 
+      <div class="popover" *ngIf="checkUser"> 
+        <ion-icon 
+          color="medium" 
+          name="ellipsis-vertical" 
+          (click)="showOptions($event)" 
+          size="small" 
+          #event 
+        ></ion-icon> 
+      </div> 
+    </div> 
+    <div class="text"> 
+      <ion-text>{{ face.content }}</ion-text> 
+    </div> 
+    <div class="image" *ngIf="face.image && face.image.length > 0"> 
+      <div *ngFor="let image of face.image"> 
+        <img [src]="image" class="image" /> 
+      </div> 
+    </div> 
+    <div class="footer"> 
+      <div class="buttons"> 
+        <div class="button"> 
+          <ion-icon name="chatbubble-outline" color="medium"></ion-icon> 
+          <ion-text color="medium">{{ face.replyCount }}</ion-text> 
+        </div> 
+        <div class="button" (click)="likeFace($event)"> 
+          <ion-icon 
+            *ngIf="!face.liked" 
+            name="heart-outline" 
+            color="medium" 
+          ></ion-icon> 
+          <ion-icon *ngIf="face.liked" name="heart" color="danger"></ion-icon> 
+          <ion-text [color]="face.liked ? 'danger' : 'medium'">{{ 
+            face.likeCount 
+          }}</ion-text> 
+        </div> 
+      </div> 
+      <div class="extra"> 
+        <div *ngIf="face.isEdited" class="edited"> 
+          <ion-icon name="create-outline" color="medium"></ion-icon> 
+          <ion-text color="medium">Edited</ion-text> 
+        </div> 
+        <ion-text color="medium">{{ face.createdAt | date }}</ion-text> 
+      </div> 
+    </div> 
+  </div> 
+</div> 
+ 
+<ion-popover #popover> 
+  <ng-template> 
+    <div class="popover-container"> 
+      <div (click)="openEditModal()" class="popover-slot"> 
+        <ion-icon name="pencil" slot="start"></ion-icon> 
+        <ion-text>Edit</ion-text> 
+      </div> 
+      <div (click)="presentAlert()" class="popover-slot"> 
+        <ion-icon name="trash" slot="start" color="danger"></ion-icon> 
+        <ion-text color="danger">Delete</ion-text> 
+      </div> 
+    </div> 
+  </ng-template> 
+</ion-popover>
